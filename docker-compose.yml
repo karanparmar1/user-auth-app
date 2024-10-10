@@ -1,0 +1,27 @@
+services:
+  db:
+    image: mongo:4.4
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  backend:
+    build: ./server
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - LOG_LEVEL=info
+      - MONGO_URI=mongodb://db:27017/user-auth-db
+    env_file:
+      - ./server/.env
+    volumes:
+      - ./server:/usr/src/app
+      - backend_node_modules:/usr/src/app/node_modules
+    depends_on:
+      - db
+
+volumes:
+  mongodb_data:
+  backend_node_modules:
