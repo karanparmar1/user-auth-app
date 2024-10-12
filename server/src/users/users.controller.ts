@@ -9,6 +9,7 @@ export class UsersController {
 
   @UseGuards(JwtAuthGuard)
   @Get()
+  // @Csrf()
   async findAll(): Promise<User[]> {
     return this.usersService.findAll();
   }

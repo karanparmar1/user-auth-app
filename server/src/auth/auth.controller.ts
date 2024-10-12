@@ -55,6 +55,7 @@ export class AuthController {
   // get the current user's profile
   @UseGuards(JwtAuthGuard)
   @Get('me')
+  // @Csrf()
   async getProfile(@Req() req) {
     const { userId } = req.user;
     const user = await this.usersService.findById(userId);
@@ -80,6 +81,13 @@ export class AuthController {
     this.setRefreshTokenCookie(res, refresh_token);
 
     return { access_token };
+  }
+
+  @Get('csrf')
+  getCsrfToken(@Req() req): any {
+    return {
+      token: req.csrfToken(),
+    };
   }
 
   @UseGuards(JwtAuthGuard)

@@ -4,9 +4,9 @@ dotenv.config();
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import * as cookieParser from 'cookie-parser';
-import * as csurf from 'csurf';
 import * as fs from 'fs';
 import helmet from 'helmet';
+// import { CsrfFilter, nestCsrf } from 'ncsrf';
 import { Logger } from 'nestjs-pino';
 import { AppModule } from './app.module';
 import { SERVER_CONFIG } from './common/constants';
@@ -22,7 +22,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     httpsOptions,
     bufferLogs: true,
-    logger: ['log', 'error', 'verbose']
+    logger: ['log', 'error', 'verbose'],
   });
 
   const logger = app.get(Logger);
@@ -45,11 +45,8 @@ async function bootstrap() {
   });
 
   // store CSRF token in cookie
-  // app.use(
-  //   csurf({
-  //     cookie: true,
-  //   }),
-  // );
+  // app.use(nestCsrf());
+  // app.useGlobalFilters(new CsrfFilter());
 
   // Global validation - To validate incoming data from every route from DTO
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
@@ -62,7 +59,6 @@ async function bootstrap() {
     logger.log(`Server running on port ${SERVER_CONFIG.PORT}`);
     logger.log(` *** Application is running on -> ${await app.getUrl()} *** `);
   });
-
 }
 
 bootstrap().catch((err) => {
