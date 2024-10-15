@@ -30,25 +30,26 @@ services:
       - db
     networks:
       - app-network
-  # frontend:
-  #   container_name: client-ui
-  #   build:
-  #     context: ./client
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - "5173:5173"
-  #   environment:
-  #     - NODE_ENV=development # Change this to 'production' for prod mode
-  #   #   - NODE_ENV=${NODE_ENV:-development}
-  #   env_file:
-  #     - ./client/.env
-  #   volumes:
-  #     - ./client:/usr/src/app
-  #     - /usr/src/app/node_modules
-  #   depends_on:
-  #     - backend
-  #   networks:
-  #     - app-network
+
+  frontend:
+    container_name: client-ui
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    environment:
+      - NODE_ENV=development # Change this to 'production' for prod mode
+    #   - NODE_ENV=${NODE_ENV:-development}
+    env_file:
+      - ./client/.env
+    volumes:
+      - ./client:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - app-network
 
 networks:
   app-network:
