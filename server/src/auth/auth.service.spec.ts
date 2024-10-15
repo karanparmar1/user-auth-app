@@ -147,7 +147,7 @@ describe('AuthService', () => {
 
       const savedUser = {
         ...newUser,
-        id: 'userId',
+        _id: 'userId',
       } as User;
 
       jest.spyOn(usersService, 'findByEmail').mockResolvedValueOnce(null);
@@ -167,11 +167,11 @@ describe('AuthService', () => {
       expect(usersService.create).toHaveBeenCalledWith(newUser);
 
       expect(jwtService.signAsync).toHaveBeenCalledWith(
-        { email: newUser.email, sub: savedUser.id },
+        { email: newUser.email, sub: savedUser._id },
         { secret: SECRETS.JWT_SECRET, expiresIn: SECRETS.JWT_EXPIRATION },
       );
       expect(jwtService.sign).toHaveBeenCalledWith(
-        { email: newUser.email, sub: savedUser.id },
+        { email: newUser.email, sub: savedUser._id },
         {
           secret: SECRETS.REFRESH_TOKEN_SECRET,
           expiresIn: SECRETS.REFRESH_TOKEN_EXPIRATION,
@@ -224,7 +224,7 @@ describe('AuthService', () => {
       };
 
       const existingUser = {
-        id: 'userId',
+        _id: 'userId',
         email: 'johndoe@example.com',
         password: 'hashedPassword',
       } as User;
@@ -251,12 +251,12 @@ describe('AuthService', () => {
       );
 
       expect(jwtService.signAsync).toHaveBeenCalledWith(
-        { email: existingUser.email, sub: existingUser.id },
+        { email: existingUser.email, sub: existingUser._id },
         { secret: SECRETS.JWT_SECRET, expiresIn: SECRETS.JWT_EXPIRATION },
       );
 
       expect(jwtService.sign).toHaveBeenCalledWith(
-        { email: existingUser.email, sub: existingUser.id },
+        { email: existingUser.email, sub: existingUser._id },
         {
           secret: SECRETS.REFRESH_TOKEN_SECRET,
           expiresIn: SECRETS.REFRESH_TOKEN_EXPIRATION,

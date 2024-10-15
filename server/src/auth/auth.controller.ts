@@ -61,7 +61,7 @@ export class AuthController {
     const user = await this.usersService.findById(userId);
 
     if (user) {
-      const { password, refreshToken, ...result } = user;
+      const { password, refreshToken, ...result } = user.toObject();
       return result;
     }
     return null;
@@ -104,7 +104,7 @@ export class AuthController {
   private setRefreshTokenCookie(res: Response, refreshToken: string) {
     res.cookie('refresh_token', refreshToken, {
       httpOnly: true,
-      secure: false, // SERVER_CONFIG.NODE_ENV === 'production',
+      secure: true, // SERVER_CONFIG.NODE_ENV === 'production',
       sameSite: 'strict',
       maxAge: DaysToMS(7),
     });

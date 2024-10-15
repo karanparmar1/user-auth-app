@@ -20,4 +20,4 @@ RUN rm -rf ./dist && npm run build
 EXPOSE 3000
 
 # Start the application
-CMD ["npm", "run", "start:dev"]
+CMD ["npm", "run", "start"]

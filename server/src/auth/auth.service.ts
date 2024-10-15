@@ -36,10 +36,10 @@ export class AuthService {
 
   async signup(newUser: SignupDto) {
     try {
-      console.log({newUser});
       const createdUser = await this.usersService.create(newUser);
 
-      return this.generateTokens(createdUser);
+      const tokens = await this.generateTokens(createdUser);
+      return tokens;
     } catch (error) {
       console.log('caught error', { msg: error });
       if (error instanceof ConflictException) {
@@ -52,11 +52,12 @@ export class AuthService {
   async login(loginUser: LoginDto) {
     const user = await this.validateUser(loginUser.email, loginUser.password);
 
-    return this.generateTokens(user);
+    const tokens = await this.generateTokens(user);
+    return tokens;
   }
 
   private async generateTokens(user: User) {
-    const payload = { email: user.email, sub: user.id };
+    const payload = { email: user.email, sub: user._id };
 
     // const access_token = this.jwtService.sign(payload);
     const access_token = await this.jwtService.signAsync(payload, {
@@ -87,7 +88,8 @@ export class AuthService {
         throw new UnauthorizedException('Invalid refresh token');
       }
 
-      return this.generateTokens(user);
+      const tokens = await this.generateTokens(user);
+      return tokens;
     } catch (error) {
       throw new UnauthorizedException(
         'Invalid refresh token : ',

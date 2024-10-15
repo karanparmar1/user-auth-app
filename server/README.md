@@ -11,12 +11,14 @@ This is the backend for a user authentication system built with NestJS, MongoDB,
 ## Setup
 
 1. Clone the repository:
+
    ```
    git clone <repository-url>
    cd server
    ```
 
 2. Install dependencies:
+
    ```
    npm install
    ```
@@ -29,7 +31,7 @@ This is the backend for a user authentication system built with NestJS, MongoDB,
    JWT_EXPIRATION=1h
    REFRESH_TOKEN_SECRET=your_refresh_token_secret
    REFRESH_TOKEN_EXPIRATION=7d
-   FRONTEND_URL=http://localhost:4000
+   FRONTEND_URL=http://localhost:5173
    ```
 
 ## Running the app
@@ -41,20 +43,20 @@ This is the backend for a user authentication system built with NestJS, MongoDB,
    docker-compose up --build
    ```
    - Or For Fresh clean build
-      ```
-      docker compose down
-      docker compose build --no-cache
-      docker compose up
-      ```
+     ```
+     docker compose down
+     docker compose build --no-cache
+     docker compose up
+     ```
 
 The application will be available at `https://localhost:3000`.
-
 
 ### Without Docker
 
 1. Start your local MongoDB server.
 
 2. Run the application:
+
    ```
    # development
    npm run start
@@ -116,7 +118,6 @@ A global exception filter is implemented to catch and format all exceptions thro
 - Implement role-based access control (RBAC) for admin and normal user
 - Add password reset
 - Implement API documentation using Swagger
-
 
 ## License
 
