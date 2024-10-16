@@ -18,7 +18,7 @@ const Navbar: FC = () => {
           HOME
         </Link>
 
-        <div className="flex items-center space-x-">
+        <div className="flex flex-col min-[480px]:flex-row items-center space-x-4 gap-y-4">
           <ThemeToggle />
 
           {isAuthenticated ? (
