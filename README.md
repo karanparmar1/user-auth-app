@@ -10,9 +10,9 @@
      docker compose build --no-cache
      docker compose up
      ```
-   The application UI will be available at `https://localhost:5173`.
+   The application UI will be available at `http://localhost:5173`.
 
-# User Authentication Backend
+# [BACKEND] User Authentication - server
 
 This is the backend for a user authentication system built with NestJS, MongoDB, and TypeScript.
 
@@ -38,23 +38,45 @@ This is the backend for a user authentication system built with NestJS, MongoDB,
    ```
 
 3. Create a `.env` file in the root directory and add the following environment variables:
+
    ```
+   # SERVER CONFIGS
    MONGO_URI=mongodb://localhost:27017/user-auth-db
    PORT=3000
-   JWT_SECRET=your_jwt_secret
+
+   # SECRETS
+   JWT_SECRET=zxcv_my_security_key_zxcv
    JWT_EXPIRATION=1h
-   REFRESH_TOKEN_SECRET=your_refresh_token_secret
+   REFRESH_TOKEN_SECRET=asdfg_my_top_secret_key_asdfg
    REFRESH_TOKEN_EXPIRATION=7d
-   FRONTEND_URL=http://localhost:4000
+
+   # CLIENT CONFIGS
+   FRONTEND_URL=http://localhost:5173
    ```
 
 ## Running the app
+
+### With Docker
+
+1. Build and run the Docker containers:
+   ```
+   docker-compose up --build
+   ```
+   - Or For Fresh clean build
+     ```
+     docker compose down
+     docker compose build --no-cache
+     docker compose up
+     ```
+
+The application will be available at `https://localhost:3000`.
 
 ### Without Docker
 
 1. Start your local MongoDB server.
 
 2. Run the application:
+
    ```
    # development
    npm run start
@@ -66,20 +88,7 @@ This is the backend for a user authentication system built with NestJS, MongoDB,
    npm run start:prod
    ```
 
-### With Docker
-
-1. Build and run the Docker containers:
-   ```
-   docker-compose up --build
-   ```
-   - Or For Fresh clean build
-      ```
-      docker compose down
-      docker compose build --no-cache
-      docker compose up
-      ```
-
-The application will be available at `http://localhost:3000`.
+The application will be available at `https://localhost:3000`.
 
 ## Testing
 
@@ -131,10 +140,6 @@ A global exception filter is implemented to catch and format all exceptions thro
 - [ ] rate limiting
 
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE.md file for details.
-
 # [FRONTEND] User Authentication UI
 
 This is the frontend part of the User Authentication application. It's built with React, TypeScript, Tailwind and Vite.
@@ -184,7 +189,7 @@ To start the development server:
 npm run dev
 ```
 
-The application will be available at `https://localhost:5173`.
+The application will be available at `http://localhost:5173`.
 
 ## Building for Production
 
@@ -211,7 +216,7 @@ To run the frontend with Docker:
    docker run -p 5173:5173 user-auth-frontend
    ```
 
-The application will be available at `https://localhost:5173`.
+The application will be available at `http://localhost:5173`.
 
 ## Testing
 
@@ -234,3 +239,7 @@ npm run test
 - [ ] Add password reset functionality
 - [ ] Implement OAuth authentication
 - [ ] Add user profile management features
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE.md file for details.

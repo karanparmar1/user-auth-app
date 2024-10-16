@@ -47,7 +47,7 @@ To start the development server:
 npm run dev
 ```
 
-The application will be available at `https://localhost:5173`.
+The application will be available at `http://localhost:5173`.
 
 ## Building for Production
 
@@ -74,7 +74,7 @@ To run the frontend with Docker:
    docker run -p 5173:5173 user-auth-frontend
    ```
 
-The application will be available at `https://localhost:5173`.
+The application will be available at `http://localhost:5173`.
 
 ## Testing
 

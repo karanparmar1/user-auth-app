@@ -118,12 +118,12 @@ A global exception filter is implemented to catch and format all exceptions thro
 
 ## Future Scope
 
-- rate limiting
-- Add email OTP verification for new user accounts
-- Implement two-factor authentication / OAuth
-- Implement role-based access control (RBAC) for admin and normal user
-- Add password reset
-- Implement API documentation using Swagger
+- [ ] Add password reset
+- [ ] Implement role-based access control (RBAC) for admin and normal user
+- [ ] Add email OTP verification for new user accounts
+- [ ] Implement two-factor authentication / OAuth
+- [ ] Implement API documentation using Swagger
+- [ ] rate limiting
 
 ## License
 
