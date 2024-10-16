@@ -1,4 +1,4 @@
-# User Authentication Backend
+# [BACKEND] User Authentication - server
 
 This is the backend for a user authentication system built with NestJS, MongoDB, and TypeScript.
 
@@ -24,13 +24,19 @@ This is the backend for a user authentication system built with NestJS, MongoDB,
    ```
 
 3. Create a `.env` file in the root directory and add the following environment variables:
+
    ```
+   # SERVER CONFIGS
    MONGO_URI=mongodb://localhost:27017/user-auth-db
    PORT=3000
-   JWT_SECRET=your_jwt_secret
+
+   # SECRETS
+   JWT_SECRET=zxcv_my_security_key_zxcv
    JWT_EXPIRATION=1h
-   REFRESH_TOKEN_SECRET=your_refresh_token_secret
+   REFRESH_TOKEN_SECRET=asdfg_my_top_secret_key_asdfg
    REFRESH_TOKEN_EXPIRATION=7d
+
+   # CLIENT CONFIGS
    FRONTEND_URL=http://localhost:5173
    ```
 

@@ -1,6 +1,6 @@
-# User Authentication Frontend
+# [FRONTEND] User Authentication UI
 
-This is the frontend part of the User Authentication application. It's built with React, TypeScript, and Vite.
+This is the frontend part of the User Authentication application. It's built with React, TypeScript, Tailwind and Vite.
 
 ## Features
 
@@ -35,6 +35,8 @@ This is the frontend part of the User Authentication application. It's built wit
 3. Create a `.env` file in the root of the client directory and add the following:
    ```
    VITE_API_URL=https://localhost:3000
+   VITE_PORT=5173
+   VITE_ENCRYPTION_KEY=zxcv_rAnDoM_kEy_fOr_eNc_zxcv
    ```
 
 ## Running the Application
@@ -45,7 +47,7 @@ To start the development server:
 npm run dev
 ```
 
-The application will be available at `https://localhost:4000`.
+The application will be available at `https://localhost:5173`.
 
 ## Building for Production
 
@@ -69,10 +71,10 @@ To run the frontend with Docker:
 
 2. Run the Docker container:
    ```
-   docker run -p 4000:4000 user-auth-frontend
+   docker run -p 5173:5173 user-auth-frontend
    ```
 
-The application will be available at `https://localhost:4000`.
+The application will be available at `https://localhost:5173`.
 
 ## Testing
 
@@ -92,6 +94,6 @@ npm run test
 
 ## Future Improvements
 
-- Add password reset functionality
-- Implement OAuth authentication
-- Add user profile management features
+- [ ] Add password reset functionality
+- [ ] Implement OAuth authentication
+- [ ] Add user profile management features
